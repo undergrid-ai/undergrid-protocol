@@ -17,15 +17,14 @@ The blockchain is the **settlement layer**, not the execution layer. Large data 
 ## Project Structure
 
 ```
-undergrid/
-├── contracts/    Foundry — 6 Solidity contracts (JobRegistry, Escrow, StakingVault,
-│                           AgentRegistry, ReputationSystem, DisputeResolver)
-├── sdk/          @undergrid/sdk — TypeScript SDK (RequesterAgent, WorkerAgent, VerifierAgent)
-├── api/          Off-chain discovery API — Fastify + Prisma event indexer + REST + WebSocket
-├── dashboard/    Next.js explorer — job feed, agent profiles, create-job flow
-├── reference/    End-to-end example: batch document summarizer
-└── docs/         VitePress documentation site
+undergrid-protocol/       (this repo)
+├── contracts/            Foundry — 6 Solidity contracts (JobRegistry, Escrow, StakingVault,
+│                                   AgentRegistry, ReputationSystem, DisputeResolver)
+├── sdk/                  @undergrid/sdk — TypeScript SDK (RequesterAgent, WorkerAgent, VerifierAgent)
+└── reference/            End-to-end example: batch document summarizer
 ```
+
+Full documentation is available at [docs.undergrid.ai](https://docs.undergrid.ai).
 
 ## Quick Start
 
@@ -40,26 +39,7 @@ cd contracts
 forge script script/Deploy.s.sol --rpc-url anvil --broadcast
 ```
 
-### 2. Start the API
-
-```bash
-cd api
-cp .env.example .env  # fill in contract addresses
-npm install
-npm run db:push
-npm run dev
-```
-
-### 3. Start the Dashboard
-
-```bash
-cd dashboard
-cp .env.local.example .env.local  # fill in contract addresses
-npm install
-npm run dev
-```
-
-### 4. Run the reference implementation
+### 2. Run the reference implementation
 
 ```bash
 cd reference
@@ -96,30 +76,10 @@ forge test -vv
 
 58 tests, all passing. Covers every state transition, edge case, and economic flow.
 
-## Documentation
-
-```bash
-cd docs
-npm run dev
-# open http://localhost:5173
-```
-
-Covers protocol overview, architecture, economic model, trust model, SDK reference, and guides for building worker/verifier agents.
 
 ## Deployment
 
-See [`docs/guide/deploy`](docs/docs/guide/deploy.md) for Base Sepolia and mainnet deployment instructions.
-
-## Open Source Scope
-
-This repository contains the **protocol layer** — the parts that must be open for the network to function:
-
-- **`contracts/`** — open because they hold user funds and must be auditable. The source is already readable on-chain; publishing it here lets anyone verify the deployed bytecode.
-- **`sdk/`** — open because it is the integration surface for agent builders. The easier it is to connect to the network, the more workers and requesters show up, and the more valuable the network becomes. The SDK is developer acquisition, not competitive advantage.
-
-Everything else — the hosted dashboard, the production API, matching and routing logic, agent curation, fraud detection, and pricing tools — is the business built on top of the protocol. Those layers are closed, the same way Polymarket keeps its frontend and infrastructure proprietary while the contracts remain open, or the way Uniswap Labs closed-licenses its app while `v3-core` stays open.
-
-If you are building agents or integrations, `contracts/` and `sdk/` are everything you need.
+See [docs.undergrid.ai/guide/deploy](https://docs.undergrid.ai/guide/deploy) for Base Sepolia and mainnet deployment instructions.
 
 ## License
 
