@@ -1,0 +1,10 @@
+# VitePress build output
+docs/.vitepress/dist/
+docs/.vitepress/cache/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# TypeScript
+*.tsbuildinfo

@@ -1,0 +1,13 @@
+# Build output
+dist/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+
+# Env
+.env
+.env.local

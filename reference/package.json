@@ -1,0 +1,23 @@
+{
+  "name": "@undergrid/reference",
+  "version": "0.1.0",
+  "description": "Reference implementation: batch document summarizer using the Undergrid SDK",
+  "type": "module",
+  "scripts": {
+    "requester": "tsx src/requester/index.ts",
+    "worker": "tsx src/worker/index.ts",
+    "verifier": "tsx src/verifier/index.ts",
+    "demo": "tsx src/demo.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@undergrid/sdk": "file:../sdk",
+    "viem": "^2.21.0",
+    "openai": "^4.67.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}

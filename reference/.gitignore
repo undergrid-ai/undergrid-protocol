@@ -1,0 +1,13 @@
+# Build output
+dist/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+
+# Env — contains private keys and API keys, never commit
+.env
+.env.local
